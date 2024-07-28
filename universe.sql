@@ -102,19 +102,19 @@ ALTER TABLE public.moon OWNER TO freecodecamp;
 CREATE TABLE public.moon_info (
     moon_id integer,
     weight numeric,
-    info_id integer NOT NULL,
     name character varying(30),
-    color text NOT NULL
+    color text NOT NULL,
+    moon_info_id integer NOT NULL
 );
 
 
 ALTER TABLE public.moon_info OWNER TO freecodecamp;
 
 --
--- Name: moon_info_info_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+-- Name: moon_info_moon_info_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
 --
 
-CREATE SEQUENCE public.moon_info_info_id_seq
+CREATE SEQUENCE public.moon_info_moon_info_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -123,13 +123,13 @@ CREATE SEQUENCE public.moon_info_info_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.moon_info_info_id_seq OWNER TO freecodecamp;
+ALTER TABLE public.moon_info_moon_info_id_seq OWNER TO freecodecamp;
 
 --
--- Name: moon_info_info_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+-- Name: moon_info_moon_info_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
 --
 
-ALTER SEQUENCE public.moon_info_info_id_seq OWNED BY public.moon_info.info_id;
+ALTER SEQUENCE public.moon_info_moon_info_id_seq OWNED BY public.moon_info.moon_info_id;
 
 
 --
@@ -243,10 +243,10 @@ ALTER TABLE ONLY public.moon ALTER COLUMN moon_id SET DEFAULT nextval('public.mo
 
 
 --
--- Name: moon_info info_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+-- Name: moon_info moon_info_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
 --
 
-ALTER TABLE ONLY public.moon_info ALTER COLUMN info_id SET DEFAULT nextval('public.moon_info_info_id_seq'::regclass);
+ALTER TABLE ONLY public.moon_info ALTER COLUMN moon_info_id SET DEFAULT nextval('public.moon_info_moon_info_id_seq'::regclass);
 
 
 --
@@ -279,18 +279,63 @@ INSERT INTO public.galaxy VALUES (6, 'Tissue Roll', 'FreshSpicyTissueRoll', fals
 -- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.moon VALUES (1, 'The Moon', 287600, 346800, 1);
+INSERT INTO public.moon VALUES (2, 'Da Moon', 35432, 15743, 2);
+INSERT INTO public.moon VALUES (3, 'Mini Gear (Active)', 666, 0, 4);
+INSERT INTO public.moon VALUES (4, 'Mini Gear 2 (Active)', 666, 0, 4);
+INSERT INTO public.moon VALUES (5, 'Satoshi', 90, 54030, 11);
+INSERT INTO public.moon VALUES (6, 'Mashio', 80, 54300, 11);
+INSERT INTO public.moon VALUES (7, 'Tahoma', 70, 54100, 11);
+INSERT INTO public.moon VALUES (8, 'Kaka', 80, 50000, 11);
+INSERT INTO public.moon VALUES (9, 'Mama', 100, 60000, 11);
+INSERT INTO public.moon VALUES (10, 'Papa', 100, 60000, 11);
+INSERT INTO public.moon VALUES (11, 'VidvaKid', 999, 2030, 4);
+INSERT INTO public.moon VALUES (12, 'VidvaKub', 999, 555, 4);
+INSERT INTO public.moon VALUES (13, 'I-canteen', 30, 10, 4);
+INSERT INTO public.moon VALUES (14, 'Moon.vg', 30, 30, 12);
+INSERT INTO public.moon VALUES (15, 'Test001', 100, 100, 12);
+INSERT INTO public.moon VALUES (16, 'Moon dala', 100, 100, 12);
+INSERT INTO public.moon VALUES (17, 'This is not a moon', 100, 100, 12);
+INSERT INTO public.moon VALUES (18, 'ABC', 123, 321, 11);
+INSERT INTO public.moon VALUES (19, 'ImTiredNow', 456, 23, 11);
+INSERT INTO public.moon VALUES (20, 'Now I just rdly type', 666, 666, 11);
+INSERT INTO public.moon VALUES (21, 'insert', 111, 111, 2);
+INSERT INTO public.moon VALUES (22, '10', 10, 10, 2);
+INSERT INTO public.moon VALUES (23, 'more', 0, 0, 2);
+INSERT INTO public.moon VALUES (24, 'just', 2, 2, 2);
+INSERT INTO public.moon VALUES (25, 'more10', 101, 10, 2);
+INSERT INTO public.moon VALUES (26, 'myCreativity', 123, 321, 2);
+INSERT INTO public.moon VALUES (27, 'isGivingUp', 333, 333, 2);
+INSERT INTO public.moon VALUES (28, 'helpImgonnadieee', 666, 69, 2);
 
 
 --
 -- Data for Name: moon_info; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.moon_info VALUES (1, 283000, 'Moon', 'white', 1);
+INSERT INTO public.moon_info VALUES (2, 283000, 'DaMoon', 'white', 2);
+INSERT INTO public.moon_info VALUES (3, 10000, 'MiniGear', 'Black', 3);
+INSERT INTO public.moon_info VALUES (4, 10000, 'MiniGear2', 'Grey', 4);
+INSERT INTO public.moon_info VALUES (18, 0, 'PizzyDiliciously', 'Yummy', 5);
 
 
 --
 -- Data for Name: planet; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.planet VALUES (1, 'Earth', 0, true, 4);
+INSERT INTO public.planet VALUES (2, 'Earth000', 123, true, 3);
+INSERT INTO public.planet VALUES (3, 'BigMoon', 666, false, 1);
+INSERT INTO public.planet VALUES (4, 'LarnGear', 106, true, 2);
+INSERT INTO public.planet VALUES (5, 'IntaniaGear', 106, false, 2);
+INSERT INTO public.planet VALUES (6, 'Gear(Active)', 21, false, 2);
+INSERT INTO public.planet VALUES (7, 'Mecury', 999, false, 4);
+INSERT INTO public.planet VALUES (8, 'Mushroom', 2, false, 6);
+INSERT INTO public.planet VALUES (9, 'Pak-Chee', 1, false, 6);
+INSERT INTO public.planet VALUES (10, 'War-Tar', 3, false, 6);
+INSERT INTO public.planet VALUES (11, 'Sature', 2499, true, 4);
+INSERT INTO public.planet VALUES (12, 'planet.zip', 0, true, 4);
 
 
 --
@@ -314,24 +359,24 @@ SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 6, true);
 
 
 --
--- Name: moon_info_info_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+-- Name: moon_info_moon_info_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.moon_info_info_id_seq', 1, false);
+SELECT pg_catalog.setval('public.moon_info_moon_info_id_seq', 5, true);
 
 
 --
 -- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.moon_moon_id_seq', 1, false);
+SELECT pg_catalog.setval('public.moon_moon_id_seq', 28, true);
 
 
 --
 -- Name: planet_planet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.planet_planet_id_seq', 1, false);
+SELECT pg_catalog.setval('public.planet_planet_id_seq', 12, true);
 
 
 --
@@ -370,7 +415,7 @@ ALTER TABLE ONLY public.moon_info
 --
 
 ALTER TABLE ONLY public.moon_info
-    ADD CONSTRAINT moon_info_pkey PRIMARY KEY (info_id);
+    ADD CONSTRAINT moon_info_pkey PRIMARY KEY (moon_info_id);
 
 
 --
@@ -419,6 +464,22 @@ ALTER TABLE ONLY public.star
 
 ALTER TABLE ONLY public.star
     ADD CONSTRAINT star_pkey PRIMARY KEY (star_id);
+
+
+--
+-- Name: moon_info moon_info_moon_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.moon_info
+    ADD CONSTRAINT moon_info_moon_id_fkey FOREIGN KEY (moon_id) REFERENCES public.moon(moon_id);
+
+
+--
+-- Name: moon moon_planet_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.moon
+    ADD CONSTRAINT moon_planet_id_fkey FOREIGN KEY (planet_id) REFERENCES public.planet(planet_id);
 
 
 --
